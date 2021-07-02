@@ -1,0 +1,114 @@
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+
+<head>
+  <meta charset="UTF-8">
+  <title>Insurance Cost Prediction using IBM Auto AI</title>
+  
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<style>
+select { 
+	width: 100%; 
+	margin-bottom: 10px; 
+	background: #fff;
+	border: none;
+	outline: none;
+	padding: 10px;
+	font-size: 13px;
+	color: #092756;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+	border: 1px solid rgba(0,0,0,0.3);
+	border-radius: 4px;
+	box-shadow: inset 0 -5px 45px rgba(100,100,100,0.2), 0 1px 1px rgba(255,255,255,0.2);
+}
+.body_contents{
+top: 30%;
+}
+.section_output{
+    bottom: 50%
+
+}
+
+</style>
+
+</head>
+
+<body>
+<div class="body_contents">
+  <div class="section_heading">
+     <h1>Insurance Cost Prediction</h1>
+  </div>
+     <!-- Main Input For Receiving Query to our ML -->
+  <div class="form_section">  
+    <form action="/y_predict" method="POST">
+
+    	
+	<div class="form_section_contents form_section_contents_main">	
+	     <div class="form_section_contents_age form_section_contents_main">	
+	     <input type="text" name="age" placeholder="Age" required="required" />
+	     </div>
+	
+	     <div class="form_section_contents_gender form_section_contents_main">	
+	     <select name= "gender" required="required">
+
+         <option value="">Select Gender </option>
+         <option value=1> Female </option>
+         <option value=0> Male </option>
+         </select>
+	     </div>
+   
+    
+         <div class="form_section_contents_bmi form_section_contents_main">	
+         <input type="text" name="bmi" placeholder="BMI" required="required" />
+	     </div>
+	
+    
+         <div class="form_section_children form_section_contents_main">	
+         <input type="text" name="children" placeholder="No: of Children" required="required" />
+	     </div>
+    
+    
+         <div class="form_section_contents_smoker form_section_contents_main">	
+         <select name= "smoker" required="required">
+
+         <option value="">Smoker? </option>
+         <option value=1> Yes </option>
+         <option value=0> No </option>
+         </select>
+	     </div>
+	
+	
+	
+         <div class="form_section_contents_region form_section_contents_main">
+         <select name= "region" required="required">
+
+         <option value="">Select Region </option>
+         <option value=3> South-West </option>
+         <option value=2> South-East </option>
+         <option value=1> North-West </option>
+         <option value=0> North-East </option>
+         </select>	
+	     </div>
+    
+    
+         <div class="form_section_contents_button form_section_contents_main">
+         <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+         </div> 
+   </div> 
+   </form>
+  </div>
+   
+   <div class="section_output">{{ prediction_text }}</div>
+    
+</div> 
+
+     
+
+</body>
+</html>
+
